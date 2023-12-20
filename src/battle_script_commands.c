@@ -1936,6 +1936,10 @@ s32 CalcCritChanceStageGen1(u8 battlerAtk, u8 battlerDef, u32 move, bool32 recor
     if (BENEFITS_FROM_LEEK(battlerAtk, holdEffectAtk))
         critChance = critChance * farfetchedLeekScaler;
 
+    // Scale for Super Luck
+    if (abilityAtk == ABILITY_SUPER_LUCK)
+        critChance = critChance * superLuckScaler;
+
     // Capped at 255
     if (critChance > 255)
         critChance = 255;
